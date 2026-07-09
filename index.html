@@ -291,6 +291,11 @@
     function waitFunc(){
         $("a.smooth").click(function(ev) {
             ev.preventDefault();
+            
+            var $parentLi = $(this).closest('li');
+            if ($parentLi.hasClass('has-sub') && $parentLi.find('> ul').length > 0 && (is('devicescreen') || is('sdevicescreen'))) {
+                return;
+            }
         
             public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
             ps_destroy();

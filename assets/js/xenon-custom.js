@@ -1183,7 +1183,7 @@ function setup_sidebar_menu()
 
 function sidebar_menu_item_expand($li, $sub)
 {
-	if($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed') && !public_vars.$mainMenu.hasClass('mobile-is-visible')))
+	if($li.data('is-busy') || (($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed') && !public_vars.$mainMenu.hasClass('mobile-is-visible')) && (is('largescreen') || is('tabletscreen'))))
 		return;
 
 	$li.addClass('expanded').data('is-busy', true);

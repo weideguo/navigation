@@ -134,9 +134,10 @@
 
 
 		// Mobile Menu Trigger
-		$('a[data-toggle="mobile-menu"]').on('click', function(ev)
+		$('a[data-toggle="mobile-menu"]').on('click touchstart', function(ev)
 		{
 			ev.preventDefault();
+			ev.stopPropagation();
 
 			public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
 			ps_destroy();
