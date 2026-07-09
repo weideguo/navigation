@@ -1171,13 +1171,19 @@ function setup_sidebar_menu()
 				else
 					sidebar_menu_item_expand($li, $sub);
 			});
+
+			$li.on('mouseleave', function()
+			{
+				if((is('largescreen') || is('tabletscreen')) && public_vars.$sidebarMenu.hasClass('collapsed') && ($li.hasClass('expanded') || $li.hasClass('opened')))
+					sidebar_menu_item_collapse($li, $sub);
+			});
 		});
 	}
 }
 
 function sidebar_menu_item_expand($li, $sub)
 {
-	if($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed')))
+	if($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed') && !public_vars.$mainMenu.hasClass('mobile-is-visible')))
 		return;
 
 	$li.addClass('expanded').data('is-busy', true);
